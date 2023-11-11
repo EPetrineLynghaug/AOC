@@ -1,3 +1,5 @@
+use colored::Colorize;
+
 mod part1;
 mod part2;
 
@@ -6,10 +8,19 @@ fn main() {
     let input = include_str!("../input.txt");
 
     /*Part one solution */
-    println!("Part 1: {}", part1::solution(input));
+    // println!("Part 1: {}", part1::solution(input)).green();
+    println!(
+        "{} {}",
+        format!("Part 1:").underline(),
+        format!("{}", part1::solution(input)).bold()
+    );
 
     /*Part two solution */
-    println!("Part 2: {}", part2::solution(input));
+    println!(
+        "{} {}",
+        format!("Part 2:").underline(),
+        format!("{}", part2::solution(input)).bold()
+    );
 }
 #[cfg(test)] /*cft bare kompiler når. denne kan bare kjøres om du skriver cargo test.  */
 
