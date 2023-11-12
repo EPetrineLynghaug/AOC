@@ -1,52 +1,10 @@
 use colored::Colorize;
-use nom::{
-    bytes::complete::tag,
-    character::{self, complete::newline},
-    multi::separated_list0,
-    IResult,
-};
 
 mod part1;
 mod part2;
+mod common;
 
-/*Lager vår egen data ut i fra listen vi fikk utdelt. kan hete hva den vil men MÅ ha stor bokstav
-grunnen til at den er i main, er at par2 og par2  er barna. */
-#[derive(Debug)]
-pub struct Present {
-    length: u32,
-    width: u32,
-    height: u32,
-}
 
-fn parse_present(input: &str) -> IResult<&str, Present> {
-    let (input, length) = character::complete::u32(input)?; /*Input str der oppe vil være lik denne. stopper bare om vi finner en u32 */
-    let (input, _) = tag("x")(input)?;
-    let (input, width) = character::complete::u32(input)?;
-    let (input, _) = tag("x")(input)?;
-    let (input, height) = character::complete::u32(input)?;
-    /*heter å forndøye data  */
-
-    Ok((
-        input,
-        Present {
-            length,
-            width,
-            height, 
-            /*, er god sikk selvom det ikke kommer noe etter. trailing comma */ 
-        }
-    ))
-}
-/*_ er at vi ikke vil bruke denne/ lagre den */
-
-/*Iresulte betyr at den kan faile. noe er feil typ. vist alt er rett får jeg et en liten type tekst. */
-pub fn parse_presents(input: &str) -> IResult<&str, Vec<Present>> {
-    let (input, presents) = separated_list0(newline, parse_present)(input)?;
-
-    Ok((
-        input,
-        presents
-    ))
-}
 /*PUB er public og kan brukes flere steder. */
 fn main() {
     /*Den faktiske koden*/
@@ -83,6 +41,6 @@ mod test {
     #[test]
     fn part2_works() {
         let resulte = part2::solution(INPUT);
-        assert_eq!(resulte, todo!());
+        assert_eq!(resulte, 34);
     }
 }

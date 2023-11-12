@@ -1,6 +1,6 @@
 use std::cmp::min;
 
-use crate::parse_presents;
+use crate::common::parse_presents;
 
 pub fn solution(input: &str) -> u32 {
     let presents = parse_presents(input).expect("Couldn parse the presents").1;
