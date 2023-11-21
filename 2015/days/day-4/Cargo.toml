@@ -1,0 +1,9 @@
+[package]
+name = "day-4"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+colored = "2.0.4"
+hex = "0.4.3"
+md-5 = "0.10.6"
